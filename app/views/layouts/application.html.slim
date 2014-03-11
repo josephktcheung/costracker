@@ -1,0 +1,38 @@
+doctype html
+html
+  head
+    title Costracker
+    link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" media="all"
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  body
+    nav.navbar.navbar-default.navbar-fixed-top role="navigation"
+      .container
+        .navbar-header
+          button.navbar-toggle data-target=".navbar-collapse" data-toggle="collapse" type="button"
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          - link_to "CosTracker"
+          / a.navbar-brand href="#"  CosTracker
+        .collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              - link_to "Home", root_path
+            li
+              - link_to "Privacy", privacy_path
+            li
+              a href="#contact"  Contact
+    header role="banner"
+      h1 CosTracker
+    main.container role="main"
+      == yield
+    .container#footer
+      p.text-muted
+        a> href="/privacy" Privacy Policy
+        | &bull;
+        a> href="/term"  Term of Use
+        | &bull;
+        | &copy; 2014 CosTracker
