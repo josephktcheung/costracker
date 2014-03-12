@@ -1,5 +1,6 @@
 Costracker::Application.routes.draw do
   root 'site#index'
-  match '/privacy', to: 'site#privacy', via: 'get'
-  match '/term', to: 'site#term', via: 'get'
+  get 'privacy' => 'site#privacy'
+  get 'term' => 'site#term'
+  get 'contact' => 'site#contact'
 end

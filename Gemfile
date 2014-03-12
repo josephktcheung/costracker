@@ -6,6 +6,9 @@ gem 'uglifier'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'slim'
+gem 'mechanize'
+gem 'bson_ext'
+gem 'mongoid', github: "mongoid/mongoid"
 
 group :development, :test do
   gem "better_errors"
