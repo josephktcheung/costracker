@@ -1,15 +1,24 @@
 require 'nokogiri'
 require 'open-uri'
 require 'pry'
+require 'bigdecimal'
 
 def scrape(url, options={})
   doc = Nokogiri::HTML(open(url))
   options.each do |k,v|
     puts text = doc.at_css(v).text
-    options[k] = text.gsub(/[^0-9\.]/, '').to_f*100.to_i
-    puts options[k].class
+    case k
+    when :price
+      options[k] = (BigDecimal(text.gsub(/[^0-9\.]/, ''))*100).to_i
+    when
+
+    else
+
+    end
+     k == :price
+
+    end
   end
-  puts options
 end
 
 url = "http://www.pg-direct.jp/products/detail/6251"
