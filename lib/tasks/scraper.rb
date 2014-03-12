@@ -10,13 +10,11 @@ def scrape(url, options={})
     case k
     when :price
       options[k] = (BigDecimal(text.gsub(/[^0-9\.]/, ''))*100).to_i
-    when
-
+    when :stock
+      options[k] = BigDecimal(text.gsub(/[^0-9\.]/, '')).to_i
     else
-
+      options[k] = text
     end
-     k == :price
-
     end
   end
 end
