@@ -8,8 +8,8 @@
 
 User.destroy_all
 User.create([
-  {email: "anil@ga.co"},
-  {email: "kalina@ga.co"},
-  {email: "harry@ga.co"},
-  {email: "charles@ga.co"}
+  {email: "anil@ga.co", password: "123", password_confirmation: "123"},
+  {email: "kalina@ga.co", password: "123", password_confirmation: "123"},
+  {email: "harry@ga.co", password: "123", password_confirmation: "123"},
+  {email: "charles@ga.co", password: "123", password_confirmation: "123"}
 ])

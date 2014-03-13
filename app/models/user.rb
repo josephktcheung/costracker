@@ -1,6 +1,7 @@
 require 'bcrypt'
 
 class User
+
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -12,6 +13,13 @@ class User
 
   before_save :encrypt_password
 
+  embeds_many :items
+
+  def self.authenticate(email, password)
+    user = User.find_by email: email
+    user if user and user.authenticate(password)
+  end
+
   def authenticate(password)
     self.fish == BCrypt::Engine.hash_secret(password, self.salt)
   end
@@ -20,7 +28,6 @@ class User
 
   def encrypt_password
     if password.present?
-      puts "Encrypting the password: #{self.password}"
       self.salt = BCrypt::Engine.generate_salt
       self.fish = BCrypt::Engine.hash_secret(password, self.salt)
     end

@@ -6,18 +6,20 @@ require 'bigdecimal'
 def scrape(url, options={})
   doc = Nokogiri::HTML(open(url))
   options.each do |k,v|
-    puts text = doc.at_css(v).text
-    case k
-    when :price
-      options[k] = (BigDecimal(text.gsub(/[^0-9\.]/, ''))*100).to_i
-    when :stock
-      options[k] = BigDecimal(text.gsub(/[^0-9\.]/, '')).to_i
+    if doc.at_css(v)
+      text = doc.at_css(v).text
+      case k
+      when :price_to_cents
+        options[k] = (BigDecimal(text.gsub(/[^0-9\.]/, ''))*100).to_i
+      when :stock
+        options[k] = BigDecimal(text.gsub(/[^0-9\.]/, '')).to_i
+      else
+        options[k] = text
+      end
     else
-      options[k] = text
-    end
+      puts "cannot fetch #{k}"
+      options.delete k
     end
   end
+  options
 end
-
-url = "http://www.pg-direct.jp/products/detail/6251"
-scrape url, price: "#price02_default", stock: "span.sale_price"
