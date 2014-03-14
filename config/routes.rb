@@ -1,6 +1,8 @@
 Costracker::Application.routes.draw do
   root 'site#index'
 
+  resources :users
+
   get 'login' => 'session#new'
   post 'login' => 'session#create'
   delete 'logout' => 'session#destroy'

@@ -1,8 +1,10 @@
 doctype html
 html
   head
-    title Costracker
+    title WishGotCha
+    link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'
     link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" media="all"
+    script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -15,23 +17,23 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          = link_to "CosTracker", root_url, class: "navbar-brand"
-          / a.navbar-brand href="#"  CosTracker
+          = link_to "WishGotCha", root_url, class: "navbar-brand"
         .collapse.navbar-collapse
-          ul.nav.navbar-nav
+          ul.nav.navbar-nav.navbar-right
             li
-              = link_to "Home", root_url
+              => link_to "Sign in", login_url
             li
-              = link_to "Privacy", privacy_url
-            li
-              = link_to "Contact", contact_url
+              => link_to "Sign up", new_user_url
+
     header role="banner"
     main.container role="main"
+      - flash.each do |key, value|
+        div class="alert alert-#{key}" #{value}
       == yield
     .container#footer
       p.text-muted
         => link_to "Privacy", privacy_url
-        | &bull;
+        ' &bull;
         => link_to "Terms of Use", term_url
-        | &bull;
-        | &copy; 2014 CosTracker
+        ' &bull;
+        ' &copy; 2014 WishGotCha

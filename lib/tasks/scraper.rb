@@ -23,3 +23,5 @@ def scrape(url, options={})
   end
   options
 end
+
+binding.pry
