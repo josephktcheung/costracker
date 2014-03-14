@@ -6,13 +6,16 @@ class SessionController < ApplicationController
     @user = User.authenticate params[:user][:email], params[:user][:password]
     if @user
       session[:user_id] = @user.id
-      render text: 'Signed in'
+      flash[:success] = "Welcome back! #{@user.email}"
+      redirect_to @user
     else
-      render text: 'Invalid user'
+      flash[:danger] = "Please sign in again."
+      render :new
     end
   end
 
   def destroy
+    session[:user_id] = nil
     render text: "Log the user out"
   end
 end

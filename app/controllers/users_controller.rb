@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
+  before_action :is_authenticated?, only: [:show]
   def index
     @users = User.all.entries
   end
 
   def show
-
+    @user = User.find(params[:id])
   end
 
   def new

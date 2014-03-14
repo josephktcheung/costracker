@@ -4,7 +4,7 @@ require 'pry'
 require 'bigdecimal'
 
 def scrape(url, options={})
-  doc = Nokogiri::HTML(open(url))
+    doc = Nokogiri::HTML(open(url))
   options.each do |k,v|
     if doc.at_css(v)
       text = doc.at_css(v).text
