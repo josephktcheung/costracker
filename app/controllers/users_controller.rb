@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :is_authenticated?, only: [:show]
+  # before_action :is_authenticated?, only: [:show]
   def index
     @users = User.all.entries
   end
@@ -16,8 +16,7 @@ class UsersController < ApplicationController
     # render json: params
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome to WishGotCha!"
-      redirect_to @user
+      redirect_to @user, flash: { success: "Welcome to WishGotCha!" }
     else
       render 'new'
     end
