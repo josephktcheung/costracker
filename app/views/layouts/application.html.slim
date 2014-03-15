@@ -31,9 +31,8 @@ html
 
     header role="banner"
     main.container role="main"
-      - flash.each do |key, value|
-        div class="alert alert-#{key}" #{value}
       == yield
+      == render partial: "layouts/messages"
     .container#footer
       p.text-muted
         => link_to "Privacy", privacy_url
