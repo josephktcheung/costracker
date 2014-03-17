@@ -28,11 +28,12 @@ class User
     self.fish == BCrypt::Engine.hash_secret(password, self.salt)
   end
 
-  def check_password_and_password_confirmation
-    errors.add(:password_confirmation, "does not match password") unless self.password == self.password_confirmation
-  end
 
   protected
+    def check_password_and_password_confirmation
+      errors.add(:password_confirmation, "does not match password") unless self.password == self.password_confirmation
+    end
+
     def encrypt_password
       if password.present?
         self.salt = BCrypt::Engine.generate_salt

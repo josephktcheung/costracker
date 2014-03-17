@@ -1,11 +1,12 @@
 .row
   .col-md-4.col-md-offset-4
     = form_for @user, html: { id: "signupform", class: "form-signup" } do |f|
-      h2.form-signin-heading Sign up
+      h2.form-signup-heading Sign up
       = render partial: "shared/error_messages"
       = f.label :email, class: "sr-only"
       = f.email_field :email, class: "form-control", placeholder: "Email address"
       = f.label :password, class: "sr-only"
-      = f.password_field :password, class: "form-control", placeholder: "Password"
-      = f.password_field :password_confirmation, class: "form-control", placeholder: "Please retype password here"
+      = f.password_field :password, class: "form-control password", placeholder: "Password"
+      = f.label :password_confirmation, class: "sr-only"
+      = f.password_field :password_confirmation, class: "form-control password_confirmation", placeholder: "Please retype password here"
       = f.submit "Sign up", class: "btn btn-success btn-block"

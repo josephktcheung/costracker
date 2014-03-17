@@ -50,17 +50,21 @@ header {
   padding-left: 15px;
 }
 
-/* sign in form */
+/* sign in/up form */
 
-.form-signin {
+.form-signinup {
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
 }
+
 .form-signin .form-signin-heading,
+.form-signup .form-signup-heading,
+.form-signin .checkbox,
 .form-signin .checkbox {
   margin-bottom: 10px;
 }
+
 .form-signin .checkbox {
   font-weight: normal;
 }
@@ -74,18 +78,29 @@ header {
   padding: 10px;
   font-size: 16px;
 }
+
 .form-signin .form-control:focus {
   z-index: 2;
 }
-.form-signin input[type="email"] {
+
+.form-signin input[type="email"],
+.form-signup input[type="email"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
+
+.form-signup .password {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
-/* buttons */
+.form-signin input[type="password"],
+.form-signup .password_confirmation {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
