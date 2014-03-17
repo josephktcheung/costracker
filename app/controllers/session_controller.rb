@@ -8,7 +8,9 @@ class SessionController < ApplicationController
     user = User.find_by(email: params[:user][:email])
     password = params[:user][:password]
     if password.blank?
-      render text: "Time to reset password" # for any account, valid or not
+      user.set_password_reset if user
+      flash.now[:notice] = "We will send you a reset password email"
+      render :new
     elsif user and user.authenticate(password)
       session[:user_id] = user.id
       flash[:success] = "Welcome back! #{user.email}"
