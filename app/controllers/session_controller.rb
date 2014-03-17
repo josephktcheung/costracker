@@ -4,8 +4,12 @@ class SessionController < ApplicationController
   end
 
   def create
-    user = User.authenticate params[:user][:email], params[:user][:password]
-    if user
+    # user = User.authenticate params[:user][:email], params[:user][:password]
+    user = User.find_by(email: params[:user][:email])
+    password = params[:user][:password]
+    if password.blank?
+      render text: "Time to reset password" # for any account, valid or not
+    elsif user and user.authenticate(password)
       session[:user_id] = user.id
       flash[:success] = "Welcome back! #{user.email}"
       sign_in user
