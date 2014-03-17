@@ -18,6 +18,7 @@ class User
   before_save :set_random_password, :encrypt_password
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: { case_sensitive: false }, length: {maximum: 50}, format: { with: VALID_EMAIL_REGEX }
+  validates :password, confirmation: true
 
   embeds_many :items
 
@@ -41,10 +42,6 @@ class User
   end
 
   protected
-    def check_password_and_password_confirmation
-      errors.add(:password_confirmation, "does not match password") unless self.password == self.password_confirmation
-    end
-
     def set_random_password
       if self.fish.blank? and password.blank?
         self.salt = BCrypt::Engine.generate_salt

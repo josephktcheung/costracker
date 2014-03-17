@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_user
+  before_filter :make_action_mailer_user_request_host_and_protocol
 
   def is_authenticated?
     redirect_to login_url if current_user
@@ -15,4 +16,10 @@ class ApplicationController < ActionController::Base
   def sign_in(user)
     @current_user = user
   end
+
+  private
+    def make_action_mailer_user_request_host_and_protocol
+      ActionMailer::Base.default_url_options[:protocol] = request.protocol
+      ActionMailer::Base.default_url_options[:host] = request.host_with_port
+    end
 end
