@@ -7,9 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.destroy_all
+temp_password = '1234567'
 User.create([
-  {email: "anil@ga.co", password: "123", password_confirmation: "123"},
-  {email: "kalina@ga.co", password: "123", password_confirmation: "123"},
-  {email: "harry@ga.co", password: "123", password_confirmation: "123"},
-  {email: "charles@ga.co", password: "123", password_confirmation: "123"}
+  { email: "anil@ga.co",     password: temp_password, password_confirmation: temp_password },
+  { email: "kalina@ga.co",   password: temp_password, password_confirmation: temp_password },
+  { email: "harry@ga.co",    password: temp_password, password_confirmation: temp_password },
+  { email: "charles@ga.co",  password: temp_password, password_confirmation: temp_password }
 ])
