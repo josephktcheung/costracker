@@ -6,9 +6,12 @@ class SessionController < ApplicationController
   end
 
   def create
-    authenticate_user(user_params)
-    handle_reset_request(user_params)
-    render text: '123'
+    if params[:user][:password].blank?
+      handle_reset_request(user_params)
+    else
+      authenticate_user(user_params)
+    end
+    render :new
   end
 
   def destroy
@@ -19,6 +22,6 @@ class SessionController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:password, :password_confirmation)
+      params.require(:user).permit(:email, :password)
     end
 end

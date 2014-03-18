@@ -42,7 +42,7 @@ class User
 
   def set_expiration
     self.expires_at = PASSWORD_RESET_EXPIRES.hours.from_now
-    self.save!
+    self.save
   end
 
   protected
