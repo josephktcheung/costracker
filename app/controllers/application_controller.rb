@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :make_action_mailer_user_request_host_and_protocol
 
   def is_authenticated?
-    redirect_to login_url if current_user
+    redirect_to login_url unless current_user
   end
 
   def current_user

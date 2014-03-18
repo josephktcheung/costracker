@@ -1,0 +1,12 @@
+.row
+  .col-md-4.col-md-offset-4
+    = form_for @item, html: {id: "wishlistform"} do |f|
+      legend Create a new wishlist item
+      .form-group
+        = f.label :name, class: "sr-only"
+        = f.text_field :name, class: "form-control", placeholder: "Item name"
+      .form-group
+        = f.label :description, class: "sr-only"
+        = f.text_field :description, class: "form-control", placeholder: "Item description"
+      .form-group
+        = f.submit "Create", class: "btn btn-success"
