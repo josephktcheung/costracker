@@ -2,6 +2,8 @@ Costracker::Application.routes.draw do
   root 'site#index'
 
   resources :users
+  resources :items
+  resources :sellers
 
   get 'login' => 'session#new'
   post 'login' => 'session#create'

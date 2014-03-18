@@ -20,11 +20,15 @@ class User
   validates :email, presence: true, uniqueness: { case_sensitive: false }, length: {maximum: 50}, format: { with: VALID_EMAIL_REGEX }
   validates :password, confirmation: true
 
-  embeds_many :items
+  has_many :items
 
   def self.authenticate(email, password)
     user = User.find_by email: email
     user if user and user.authenticate(password)
+  end
+
+  def self.find_by_code(code)
+    user = User.find_by(code: code, expires_at: {"$gte" => Time.now.gmtime})
   end
 
   def authenticate(password)
