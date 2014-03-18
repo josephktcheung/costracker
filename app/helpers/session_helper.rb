@@ -1,10 +1,14 @@
 module SessionHelper
 
-  def authenticate_user(user_params)
-    puts "authenticate user", user_params
+  def authenticate_user(params)
+    if User.authenticate(params[:email], params[:password])
+      redirect_to root_url
+    else
+      flash.now[:alert] = "Unable to log you in. Please check your email and password and try again."
+    end
   end
 
-  def handle_reset_request(user_params)
+  def handle_reset_request(params)
     puts "handle reset request", user_params
   end
 end
