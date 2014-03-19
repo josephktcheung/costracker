@@ -1,7 +1,7 @@
 .row
-  #sidebar.col-md-2
-    h2 Wish list items
-    ul.nav.nav-pills.nav-stacked
+  == render partial: "layouts/sidebar"
+  .col-md-10
+    ul.item_list
       - for item in @items
         li
-          = link_to item.name, item_url(item.id)
+          = "#{item.name}, #{item.description}"
