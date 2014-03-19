@@ -11,6 +11,7 @@ class SessionController < ApplicationController
     else
       authenticate_user(user_params)
     end
+    (redirect_to root_url and return) if session[:user_id].present?
     render :new
   end
 
