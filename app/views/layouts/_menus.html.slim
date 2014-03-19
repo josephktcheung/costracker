@@ -1,0 +1,12 @@
+- if current_user
+  li
+    = link_to "My wish list", items_url
+  li
+    = link_to "Profile", user_url(current_user.id)
+  li
+    = link_to "Log out", logout_url, method: :delete
+- else
+  li
+    = link_to "Sign in", login_url
+  li
+    = link_to "Sign up", new_user_url
