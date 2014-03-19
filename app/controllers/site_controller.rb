@@ -1,6 +1,6 @@
 class SiteController < ApplicationController
   def index
-    # @users = User.all.entries
+    redirect_to items_url if current_user
   end
   def privacy
   end
