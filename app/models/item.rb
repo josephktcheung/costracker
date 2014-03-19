@@ -4,6 +4,7 @@ class Item
 
   field :name, type: String
   field :description, type: String
+  field :image_url, type: String
 
   validates :name, presence: true
   belongs_to :user

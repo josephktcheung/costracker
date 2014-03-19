@@ -1,7 +1,5 @@
 .row
   == render partial: "layouts/sidebar"
   .col-md-10
-    ul.item_list
-      - for item in @items
-        li
-          = "#{item.name}, #{item.description}"
+    ul.item-list
+      = render partial: "shared/item", collection: @items
