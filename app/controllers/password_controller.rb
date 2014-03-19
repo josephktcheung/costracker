@@ -11,6 +11,7 @@ class PasswordController < ApplicationController
         @user.errors.add(:password, "This field can't be blank")
       elsif @user.update user_params
         render text: "Success"
+        UserNotifier.password_was_reset(@user).deliver
       else
         render text: "Failure"
       end
