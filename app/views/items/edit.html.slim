@@ -1,6 +1,5 @@
 .col-md-10
   = form_for @item, html: {id: "wishlistform"} do |f|
-    legend Create a new wishlist item
     .form-group
       = f.label :name, class: "sr-only"
       = f.text_field :name, class: "form-control", placeholder: "Item name"
