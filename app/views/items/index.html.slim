@@ -1,5 +1,7 @@
 .row
-  .col-md-8.col-md-offset-4
-    p
+  #sidebar.col-md-2
+    h2 Wish list items
+    ul.nav.nav-pills.nav-stacked
       - for item in @items
-        = item.description
+        li
+          = link_to item.name, item_url(item.id)

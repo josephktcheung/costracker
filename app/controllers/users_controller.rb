@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     # render json: params
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user, flash: { success: "Welcome to WishGotCha!" }
+      sign_in(@user, "Welcome to WishGotCha!")
     else
       render 'new'
     end
