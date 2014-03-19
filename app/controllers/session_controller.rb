@@ -1,5 +1,4 @@
 class SessionController < ApplicationController
-  include SessionHelper
 
   def new
     redirect_to root_url, notice: "You are logged in." if current_user
@@ -7,17 +6,15 @@ class SessionController < ApplicationController
 
   def create
     if params[:user][:password].blank?
-      handle_reset_request(user_params)
+      PasswordResetter.new(flash).handle_reset_request(user_params)
     else
-      authenticate_user(user_params)
+      return if sign_in(UserAuthenticator.new(session, flash).authenticate_user(user_params))
     end
-    (redirect_to root_url and return) if session[:user_id].present?
     render :new
   end
 
   def destroy
-    session[:user_id] = nil
-    redirect_to login_url, flash: {success: "Successfully log out! See you next time!"}
+    sign_out
   end
 
   private

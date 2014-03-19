@@ -13,8 +13,16 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
-  def sign_in(user)
-    @current_user = user
+  def sign_in(user, notice = nil)
+    if user
+      session[:user_id] = user.id
+      redirect_to root_url, notice: notice
+    end
+  end
+
+  def sign_out
+    session[:user_id] = nil
+    redirect_to login_url, notice: "You've successfully logged out"
   end
 
   private

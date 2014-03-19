@@ -45,6 +45,17 @@ class User
     self.save
   end
 
+  def reset_password(params)
+    if params[:password].blank?
+      self.errors.add(:password, "can't be blank")
+      false
+    else
+      if self.update_attributes(params)
+        self.update_attributes(params.merge(code: nil, expires_at: nil))
+      end
+    end
+  end
+
   protected
     def set_random_password
       if self.fish.blank? and password.blank?
