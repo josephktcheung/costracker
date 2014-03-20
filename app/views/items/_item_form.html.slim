@@ -8,4 +8,16 @@
   .form-group
     = f.label :image_url, "Image link"
     = f.text_field :image_url, class: "form-control", placeholder: "Item image url"
+  = f.fields_for :sellers do |seller|
+    .panel.panel-default
+      .panel-body
+        .form-group
+          = seller.label :name, "Seller name"
+          = seller.text_field :name, class: "form-control"
+        .form-group
+          = seller.label :url, "Seller link"
+          = seller.text_field :url, class: "form-control"
+        .form-group
+          = seller.hidden_field :_destroy
+          = link_to "Remove seller", '#', class: "remove-seller"
   = f.submit "Submit", class: "btn btn-success"

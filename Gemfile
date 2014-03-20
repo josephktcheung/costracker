@@ -5,11 +5,13 @@ gem 'activesupport', require: 'active_support'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'coffee-rails'
 gem 'slim'
 gem 'mechanize'
 gem 'bson_ext'
 gem 'mongoid', github: "mongoid/mongoid"
 gem 'bcrypt'
+
 
 group :development, :test do
   # gem "better_errors"
