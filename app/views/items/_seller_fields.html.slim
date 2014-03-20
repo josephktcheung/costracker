@@ -1,0 +1,11 @@
+.panel.panel-default
+  .panel-body
+    .form-group
+      = f.label :name, "Seller name"
+      = f.text_field :name, class: "form-control"
+    .form-group
+      = f.label :url, "Seller link"
+      = f.text_field :url, class: "form-control"
+    .form-group
+      = f.hidden_field :_destroy
+      = link_to "Remove seller", '#', class: "remove-seller"
