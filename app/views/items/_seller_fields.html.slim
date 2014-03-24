@@ -1,11 +1,18 @@
 .panel.panel-default
   .panel-body
-    .form-group
+    .form-group.name
       = f.label :name, "Seller name"
       = f.text_field :name, class: "form-control"
-    .form-group
+    .form-group.url
       = f.label :url, "Seller link"
       = f.text_field :url, class: "form-control"
-    .form-group
+    .form-group.price-tag
+      = f.label :price_tag, "Price"
+      = f.text_field :price_tag, class: "form-control", placeholder: "price css selector goes here"
+    .form-group.stock-tag
+      = f.label :stock_tag, "Stock"
+      = f.text_field :stock_tag, class: "form-control", placeholder: "stock css selector goes here"
+    .form-group.destroy
       = f.hidden_field :_destroy
       = link_to "Remove seller", '#', class: "remove-seller"
+      = link_to "Fetch details", '#', class: "fetch-details"

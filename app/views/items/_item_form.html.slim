@@ -1,14 +1,15 @@
-= form_for @item, html: {id: "wishlistform"} do |f|
-  .form-group
-    = f.label :name
-    = f.text_field :name, class: "form-control", placeholder: "Item name"
-  .form-group
-    = f.label :description
-    = f.text_field :description, class: "form-control", placeholder: "Item description"
-  .form-group
-    = f.label :image_url, "Image link"
-    = f.text_field :image_url, class: "form-control", placeholder: "Item image url"
-  = f.fields_for :sellers do |seller|
-    = render 'seller_fields', f: seller
-  = link_to_add_fields raw('<span class="glyphicon glyphicon-plus-sign"></span> Add seller'), f, :sellers
-  = f.submit "Submit", class: "btn btn-success btn-submit btn-block"
+.row
+  = form_for @item, html: {id: "wishlistform"} do |f|
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: "form-control", placeholder: "Item name"
+    .form-group
+      = f.label :description
+      = f.text_field :description, class: "form-control", placeholder: "Item description"
+    .form-group
+      = f.label :image_url, "Image link"
+      = f.text_field :image_url, class: "form-control", placeholder: "Item image url"
+    = f.fields_for :sellers do |seller|
+      = render 'seller_fields', f: seller
+    = link_to_add_fields raw('<span class="glyphicon glyphicon-plus-sign"></span> Add seller'), f, :sellers
+    = f.submit "Submit", class: "btn btn-success btn-submit btn-block"
