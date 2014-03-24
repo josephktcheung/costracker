@@ -12,13 +12,13 @@
         = f.label :image_url, "Image link"
         = f.text_field :image_url, class: "form-control", placeholder: "Item image url"
     - else
-      .form-group#name.item-attr
+      .form-group.item-attr
         = f.label :name
         = f.text_field :name, class: "form-control", placeholder: "Item name"
-      .form-group#description.item-attr
+      .form-group.item-attr
         = f.label :description
         = f.text_field :description, class: "form-control", placeholder: "Item description"
-      .form-group#img.item-attr
+      .form-group.item-attr
         = f.label :image_url, "Image link"
         = f.text_field :image_url, class: "form-control", placeholder: "Item image url"
   = f.fields_for :sellers do |seller|

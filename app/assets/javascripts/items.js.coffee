@@ -19,6 +19,7 @@ jQuery ->
       img = $('<img src="'+url+'" alt="Item url" class="img-thumbnail col-md-4" id="img-thumbnail"/>')
       $('#item-form').prepend(img)
 
+
   $('form').on 'click', '.fetch-details', (event) ->
     url = $('.fetch-details').closest('.panel-body').children('.url').children('input').attr('value')
     price_tag = $('.fetch-details').closest('.panel-body').children('.price-tag').children('input').attr('value')
