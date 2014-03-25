@@ -11,7 +11,9 @@ gem 'mechanize'
 gem 'bson_ext'
 gem 'mongoid', github: "mongoid/mongoid"
 gem 'bcrypt'
-
+gem 'money-rails'
+gem "money-open-exchange-rates", "~> 0.1.5"
+gem 'figaro'
 
 group :development, :test do
   # gem "better_errors"

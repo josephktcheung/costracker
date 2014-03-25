@@ -10,7 +10,7 @@ class Seller
   field :url, type: String
   field :price_tag, type: String
   field :stock_tag, type: String
-  field :price_to_cents, type: Integer
+  field :price_to_cents, type: Money
   field :stock, type: Integer
 
   belongs_to :item
