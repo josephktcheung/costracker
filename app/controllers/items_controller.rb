@@ -41,8 +41,6 @@ class ItemsController < ApplicationController
   def fetch_details
     @seller = Seller.new(url: params[:url], price_tag: params[:price_tag], stock_tag: params[:stock_tag], item_id: params[:item_id])
     @seller.scrape
-    puts @price_id = params[:price_id]
-    puts @stock_id = params[:stock_id]
     respond_to do |format|
       # format.html { redirect_to :edit }
       format.js
