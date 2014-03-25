@@ -3,7 +3,7 @@ require 'money/bank/open_exchange_rates_bank'
 
 MoneyRails.configure do |config|
 
-  config.default_currency = :usd
+  config.default_currency = :hkd
 
   moe = Money::Bank::OpenExchangeRatesBank.new
   moe.app_id = ENV["MOE_APP_ID"]

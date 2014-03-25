@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.sellers.build
+    @currencies = Seller.accepted_currencies_objects
   end
 
   def create
@@ -22,12 +23,13 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @currencies = Seller.accepted_currencies_objects
   end
 
   def update
-    @item = Item.find(params[:id])
-    @item.update(item_params)
-    redirect_to items_url
+    # @item = Item.find(params[:id])
+    # @item.update(item_params)
+    # redirect_to items_url
   end
 
   def destroy
@@ -59,6 +61,7 @@ class ItemsController < ApplicationController
           :id,
           :url,
           :name,
+          :currency,
           :price_tag,
           :stock_tag,
           :_destroy

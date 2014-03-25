@@ -6,6 +6,9 @@
     .form-group.url
       = f.label :url, "Seller link"
       = f.text_field :url, class: "form-control"
+    .form-group
+      = f.label :currency, "Currency"
+      = f.select :currency, options_for_select(@currencies),{}, {class: "form-control"}
     .form-group.price-tag
       = f.label :price_tag, "Price"
       = f.text_field :price_tag, class: "form-control", placeholder: "price css selector goes here"

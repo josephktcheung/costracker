@@ -6,6 +6,10 @@ class Seller
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  ACCEPTED_CURRENCIES = [:hkd, :usd, :eur, :gbp, :cad, :jpy]
+
+  attr_accessor :currency
+
   field :name, type: String
   field :url, type: String
   field :price_tag, type: String
@@ -16,6 +20,10 @@ class Seller
   belongs_to :item
 
   before_save :scrape
+
+  def self.accepted_currencies_objects
+    ACCEPTED_CURRENCIES.map { |currency| Money::Currency.find(currency) }
+  end
 
   def scrape
     doc = Nokogiri::HTML(open(self.url))
