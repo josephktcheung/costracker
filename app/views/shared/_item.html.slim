@@ -2,7 +2,7 @@ li
   .row
     .col-md-4
       span
-        = image_tag(item.image_url, size: "250x250")
+        = link_to image_tag(item.image_url, size: "250x250"), item_url(item.id)
     .col-md-8
       span
         = item.name

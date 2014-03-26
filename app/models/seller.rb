@@ -30,7 +30,7 @@ class Seller
       price_log = self.price_logs.find_by(date: Date.today)
     end
     unless self.temp_price.nil?
-      price_log.price = Money.new(self.temp_price, self.currency)
+      price_log.price = Money.new_with_amount(self.temp_price, self.currency)
       price_log.date = Date.today
       price_log.save
     end
@@ -55,7 +55,7 @@ class Seller
   def scrape
     doc = Nokogiri::HTML(open(self.url))
     price_text = doc.at_css(self.price_tag).text
-    self.temp_price = (BigDecimal(price_text.gsub(/[^0-9\.]/, ''))*100).to_i
+    self.temp_price = BigDecimal(price_text.gsub(/[^0-9\.]/, '')).to_i
     unless self.stock_tag.blank?
       stock_text = doc.at_css(self.stock_tag).text
       self.stock = BigDecimal(stock_text.gsub(/[^0-9\.]/, '')).to_i
