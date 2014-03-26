@@ -6,15 +6,21 @@
     .form-group.url
       = f.label :url, "Seller link"
       = f.text_field :url, class: "form-control"
-    .form-group
-      = f.label :currency, "Currency"
-      = f.select :currency, options_for_select(@currencies),{}, {class: "form-control"}
+    .form-group.currency
+      = f.label :currency
+      = f.select :currency, @currencies, {selected: f.object.currency}, {class: "form-control"}
     .form-group.price-tag
-      = f.label :price_tag, "Price"
+      = f.label :price_tag, "Price Tag"
       = f.text_field :price_tag, class: "form-control", placeholder: "price css selector goes here"
+    .form-group.price
+      = f.label :price
+      = f.text_field :price, class: "form-control"
     .form-group.stock-tag
-      = f.label :stock_tag, "Stock"
+      = f.label :stock_tag, "Stock Tag"
       = f.text_field :stock_tag, class: "form-control", placeholder: "stock css selector goes here"
+    .form-group.stock-tag
+      = f.label :stock
+      = f.text_field :stock, class: "form-control"
     .form-group.destroy
       = f.hidden_field :_destroy
       = link_to "Remove seller", '#', class: "remove-seller"

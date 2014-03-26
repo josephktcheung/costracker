@@ -1,3 +1,4 @@
+require 'pry'
 class ItemsController < ApplicationController
 
   before_action :is_authenticated?
@@ -27,9 +28,9 @@ class ItemsController < ApplicationController
   end
 
   def update
-    # @item = Item.find(params[:id])
-    # @item.update(item_params)
-    # redirect_to items_url
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+    redirect_to items_url
   end
 
   def destroy
@@ -39,8 +40,9 @@ class ItemsController < ApplicationController
   end
 
   def fetch_details
-    @seller = Seller.new(url: params[:url], price_tag: params[:price_tag], stock_tag: params[:stock_tag], item_id: params[:item_id])
-    @seller.scrape
+    @seller = Seller.get_item_price_and_stock(params[:url], params[:price_tag], params[:currency], params[:stock_tag])
+    @price_id = params[:price_id]
+    @stock_id = params[:stock_id]
     respond_to do |format|
       # format.html { redirect_to :edit }
       format.js
