@@ -19,12 +19,22 @@ class Seller
   field :stock, type: Integer
 
   belongs_to :item
+  has_many :price_logs
 
   before_save :scrape
   before_save :create_price
 
   def create_price
-    self.price = Money.new(self.temp_price, self.currency) unless self.temp_price.nil?
+    if self.price_logs.find_by(date: Date.today).nil?
+      price_log = self.price_logs.build
+    else
+      price_log = self.price_logs.find_by(date: Date.today)
+    end
+    unless self.temp_price.nil?
+      price_log.price = Money.new(self.temp_price, self.currency)
+      price_log.date = Date.today
+      price_log.save
+    end
   end
 
   def self.get_item_price_and_stock(url, price_tag, currency, stock_tag)
