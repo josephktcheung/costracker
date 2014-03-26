@@ -15,16 +15,15 @@ class Seller
   field :currency, type: String
   field :price_tag, type: String
   field :stock_tag, type: String
-  field :price, type: Money
   field :stock, type: Integer
 
   belongs_to :item
   has_many :price_logs
 
   before_save :scrape
-  before_save :create_price
+  before_save :create_price_log
 
-  def create_price
+  def create_price_log
     if self.price_logs.find_by(date: Date.today).nil?
       price_log = self.price_logs.build
     else
@@ -37,7 +36,7 @@ class Seller
     end
   end
 
-  def self.get_item_price_and_stock(url, price_tag, currency, stock_tag)
+  def self.get_temp_price_and_stock(url, price_tag, currency, stock_tag)
     seller = Seller.new(
         url: url,
         price_tag: price_tag,
@@ -45,7 +44,6 @@ class Seller
         currency: currency
       )
     seller.scrape
-    seller.create_price
     seller
   end
 

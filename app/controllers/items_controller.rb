@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :is_authenticated?
 
   def index
-    @items = Item.all.entries
+    @items = Item.find_by(user_id: current_user.id).to_a
   end
 
   def show
@@ -40,7 +40,8 @@ class ItemsController < ApplicationController
   end
 
   def fetch_details
-    @seller = Seller.get_item_price_and_stock(params[:url], params[:price_tag], params[:currency], params[:stock_tag])
+    puts params
+    @seller = Seller.get_temp_price_and_stock(params[:url], params[:price_tag], params[:currency], params[:stock_tag])
     @price_id = params[:price_id]
     @stock_id = params[:stock_id]
     respond_to do |format|

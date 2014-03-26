@@ -27,7 +27,7 @@ $ ->
     price_tag = $(@).closest('.panel-body').children('.price-tag').children('input').val()
     price_id = $(@).closest('.panel-body').children('.price').children('input').attr('id')
     stock_tag = $(@).closest('.panel-body').children('.stock-tag').children('input').val()
-    stock_id = $(@).closest('.panel-body').children('.stock-tag').children('input').attr('id')
+    stock_id = $(@).closest('.panel-body').children('.stock').children('input').attr('id')
     data = {
       url: url
       price_tag: price_tag
@@ -37,6 +37,7 @@ $ ->
       currency: currency
     }
     $.ajax(type: 'POST', url: 'fetch_details', data: data)
+    event.preventDefault()
 
   $('form').on 'click', '.add_fields', (event) ->
     time = new Date().getTime()
