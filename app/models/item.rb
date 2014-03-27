@@ -5,6 +5,7 @@ class Item
   field :name, type: String
   field :description, type: String
   field :image_url, type: String
+  field :desired_price, type: Money
 
   validates :name, presence: true
 

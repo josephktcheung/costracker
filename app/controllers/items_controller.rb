@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(id: params[:id])
+    @best_seller = @item.sellers.min { |a, b| a.today_price <=> b.today_price }
   end
 
   def new

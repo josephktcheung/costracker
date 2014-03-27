@@ -47,6 +47,9 @@ class Seller
     seller
   end
 
+  def today_price
+    price_logs.find_by(date: Date.today).price
+  end
 
   def self.accepted_currencies_objects
     ACCEPTED_CURRENCIES.map { |currency| Money::Currency.find(currency) }
