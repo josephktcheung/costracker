@@ -14,8 +14,11 @@ describe User do
     expect(user).to be_invalid
   end
 
-  it "is invalid without a salt"
-
-  it "is invalid without a fish"
+  it "is not valid when email already exists" do
+    new_user = User.new(
+      email: "joe@example.com"
+    )
+    expect(new_user).to be_invalid
+  end
 
 end

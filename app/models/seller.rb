@@ -48,7 +48,8 @@ class Seller
   end
 
   def today_price
-    price_logs.find_by(date: Date.today).price
+    today_price = price_logs.find_by(date: Date.today)
+    today_price.price if today_price
   end
 
   def self.accepted_currencies_objects
