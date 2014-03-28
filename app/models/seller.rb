@@ -15,8 +15,6 @@ class Seller
   field :url, type: String
   field :currency, type: String
   field :price_tag, type: String
-  field :stock_tag, type: String
-  field :stock, type: Integer
 
   belongs_to :item
   has_many :price_logs
@@ -41,7 +39,6 @@ class Seller
     seller = Seller.new(
         url: url,
         price_tag: price_tag,
-        stock_tag: stock_tag,
         currency: currency
       )
     seller.scrape
@@ -62,10 +59,6 @@ class Seller
     if doc.at_css(self.price_tag)
       price_text = doc.at_css(self.price_tag).text
       self.temp_price = BigDecimal(price_text.gsub(/[^0-9\.]/, '')).to_i
-    end
-    unless self.stock_tag.blank?
-      stock_text = doc.at_css(self.stock_tag).text
-      self.stock = BigDecimal(stock_text.gsub(/[^0-9\.]/, '')).to_i
     end
   end
 end

@@ -13,6 +13,7 @@ class User
   field :salt, type: String
   field :fish, type: String
   field :code, type: String
+  field :fav_currency, type: String
   field :expires_at, type: Time
 
   before_save :set_random_password, :encrypt_password

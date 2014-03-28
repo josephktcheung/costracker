@@ -11,6 +11,9 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find_by(id: params[:id])
     @best_seller = @item.sellers.min { |a, b| a.today_price <=> b.today_price }
+    @user = current_user
+    @desired_price = @item.desired_price.exchange_to(@user.fav_currency)
+    @today_price = @best_seller.today_price.exchange_to(@user.fav_currency)
   end
 
   def new

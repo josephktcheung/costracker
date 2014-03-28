@@ -15,12 +15,6 @@
     .form-group.price.hide
       = f.label :temp_price, "Price"
       = f.text_field :temp_price, class: "form-control"
-    .form-group.stock-tag
-      = f.label :stock_tag, "Stock Tag"
-      = f.text_field :stock_tag, class: "form-control", placeholder: "stock css selector goes here"
-    .form-group.stock.hide
-      = f.label :stock
-      = f.text_field :stock, class: "form-control"
     .form-group.destroy
       = f.hidden_field :_destroy
       = link_to "Remove seller", '#', class: "remove-seller"
