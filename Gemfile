@@ -16,6 +16,7 @@ gem "money-open-exchange-rates", "~> 0.1.5"
 gem 'figaro'
 gem 'sidekiq'
 gem 'whenever'
+gem 'sinatra'
 
 group :development, :test do
   # gem "better_errors"
