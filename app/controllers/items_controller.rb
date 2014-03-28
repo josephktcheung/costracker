@@ -1,10 +1,11 @@
 require 'pry'
+
 class ItemsController < ApplicationController
 
   before_action :is_authenticated?
 
   def index
-    @items = Item.find_by(user_id: current_user.id).to_a
+    @items = Item.all.entries
   end
 
   def show

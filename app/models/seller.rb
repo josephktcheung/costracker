@@ -2,6 +2,7 @@ class Seller
   require 'nokogiri'
   require 'open-uri'
   require 'bigdecimal'
+  require 'pry'
 
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -58,8 +59,10 @@ class Seller
 
   def scrape
     doc = Nokogiri::HTML(open(self.url))
-    price_text = doc.at_css(self.price_tag).text
-    self.temp_price = BigDecimal(price_text.gsub(/[^0-9\.]/, '')).to_i
+    if doc.at_css(self.price_tag)
+      price_text = doc.at_css(self.price_tag).text
+      self.temp_price = BigDecimal(price_text.gsub(/[^0-9\.]/, '')).to_i
+    end
     unless self.stock_tag.blank?
       stock_text = doc.at_css(self.stock_tag).text
       self.stock = BigDecimal(stock_text.gsub(/[^0-9\.]/, '')).to_i

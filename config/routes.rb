@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Costracker::Application.routes.draw do
   root 'site#index'
 
@@ -21,4 +23,6 @@ Costracker::Application.routes.draw do
   get   'reset/:code' => 'password#edit', as: :reset
   put   'reset/:code' => 'password#update'
   patch 'reset/:code' => 'password#update'
+
+  mount Sidekiq::Web, at: '/sidekiq'
 end
