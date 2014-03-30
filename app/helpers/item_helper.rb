@@ -1,26 +1,14 @@
 module ItemHelper
-  require 'nokogiri'
-  require 'open-uri'
-  require 'bigdecimal'
 
-  def scrape(url, options={})
-    doc = Nokogiri::HTML(open(url))
-    options.each do |k,v|
-      if doc.at_css(v)
-        text = doc.at_css(v).text
-        case k
-        when :price_to_cents
-          options[k] = (BigDecimal(text.gsub(/[^0-9\.]/, ''))*100).to_i
-        when :stock
-          options[k] = BigDecimal(text.gsub(/[^0-9\.]/, '')).to_i
-        else
-          options[k] = text
-        end
-      else
-        puts "cannot fetch #{k}"
-        options.delete k
-      end
-    end
-    options
+  def best_seller(item)
+    item.sellers.min { |a, b| a.today_price <=> b.today_price }
+  end
+
+  def desired_price(item, currency)
+    item.desired_price.exchange_to(currency)
+  end
+
+  def today_price(seller,currency)
+    seller.today_price.exchange_to(currency)
   end
 end

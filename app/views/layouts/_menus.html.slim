@@ -2,8 +2,6 @@
   li
     = link_to "My wish list", items_url
   li
-    = link_to "Profile", user_url(current_user.id)
-  li
     = link_to "Log out", logout_url, method: :delete
 - else
   li

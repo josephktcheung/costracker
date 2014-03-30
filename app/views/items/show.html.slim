@@ -1,13 +1,13 @@
 = image_tag(@item.image_url, class: "col-md-4 col-xs-6")
 .col-md-6
   h3 Desired Price
-  | #{@desired_price.currency.iso_code}
-  = humanized_money_with_symbol @desired_price
+  | #{desired_price(@item, @user.fav_currency).currency.iso_code}
+  = humanized_money_with_symbol desired_price(@item, @user.fav_currency)
   h3 Current Price
-  - if @best_seller.today_price
-    | #{@desired_price.currency.iso_code}
-    = humanized_money_with_symbol @today_price
-    | (#{humanized_money_with_symbol @best_seller.today_price})
+  - if best_seller(@item).today_price
+    | #{desired_price(@item, @user.fav_currency).currency.iso_code}
+    =<> humanized_money_with_symbol today_price(best_seller(@item),@user.fav_currency)
+    | (#{humanized_money_with_symbol best_seller(@item).today_price})
   h3 Bargain Seller
-  | #{@best_seller.name}
-  =<> link_to "Buy now!", @best_seller.url
+  | #{best_seller(@item).name}
+  =<> link_to "Buy now!", best_seller(@item).url
