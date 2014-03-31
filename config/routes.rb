@@ -9,6 +9,8 @@ Costracker::Application.routes.draw do
     post :fetch_details
   end
 
+  post 'items/fetch_details' => 'items#fetch_details'
+
   resources :sellers
 
   get 'login' => 'session#new'

@@ -8,6 +8,9 @@
       .form-group.col-md-8.item-attr
         = f.label :image_url, "Image link"
         = f.text_field :image_url, class: "form-control", placeholder: "Item image url"
+      .form-group.col-md-8.item-attr
+        = f.label :temp_price, "Desired price"
+        = f.number_field :temp_price, class: "form-control", value: f.object.desired_price.cents / 100
     - else
       .form-group.item-attr
         = f.label :name
@@ -15,6 +18,9 @@
       .form-group.item-attr
         = f.label :image_url, "Image link"
         = f.text_field :image_url, class: "form-control", placeholder: "Item image url"
+      .form-group.item-attr
+        = f.label :temp_price, "Desired price"
+        = f.number_field :temp_price, class: "form-control"
   = f.fields_for :sellers do |seller|
     = render 'seller_fields', f: seller
   = link_to_add_fields raw('<span class="glyphicon glyphicon-plus-sign"></span> Add seller'), f, :sellers

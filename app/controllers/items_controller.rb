@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = current_user.items.create(name: params[:item][:name], description: params[:item][:description])
+    @item = current_user.items.create(item_params)
     redirect_to items_url, notice: "New wishlist item created!"
   end
 
@@ -43,15 +43,12 @@ class ItemsController < ApplicationController
   end
 
   def fetch_details
-    puts params
     @seller = Seller.get_temp_price_and_stock(
         params[:url],
         params[:price_tag],
         params[:currency],
-        params[:stock_tag]
       )
     @price_id = params[:price_id]
-    @stock_id = params[:stock_id]
     respond_to do |format|
       # format.html { redirect_to :edit }
       format.js
@@ -63,16 +60,16 @@ class ItemsController < ApplicationController
     def item_params
       attributes = [
         :name,
-        :description,
         :image_url,
+        :temp_price,
         sellers_attributes:
         [
           :id,
           :url,
           :name,
           :currency,
+          :temp_price,
           :price_tag,
-          :stock_tag,
           :_destroy
         ]
       ]

@@ -35,7 +35,7 @@ class Seller
     end
   end
 
-  def self.get_temp_price_and_stock(url, price_tag, currency, stock_tag)
+  def self.get_temp_price_and_stock(url, price_tag, currency)
     seller = Seller.new(
         url: url,
         price_tag: price_tag,
