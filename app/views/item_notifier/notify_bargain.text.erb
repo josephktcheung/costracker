@@ -1,4 +1,5 @@
 You got a deal today!
-Your desired price for wishlist item <% @item.name %> is met by <% @seller.name %>, priced at <% @seller.today_price %>.
-Go to <% @seller.url %> to buy it!
+Your desired price for wishlist item <%= @item.name %> is met by <%= @seller.name %>, priced at <%= @user.fav_currency %> <%= humanized_money_with_symbol @seller.today_price.exchange_to(@user.fav_currency) %> (<%= humanized_money_with_symbol @seller.today_price %>).
+Go to <%= @seller.url %> to buy it!
+
 WishGotCha

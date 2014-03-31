@@ -2,8 +2,7 @@ p
   ' You got a deal today!
 
 p
-  ' Your desired price for wishlist item #{@item.name} is met by #{@seller.name}, priced at #{@seller.today_price}.
-p
-  ' Go to #{@seller.url} to buy it!
-  br
-  ' WishGotCha
+  ' Your desired price for wishlist item #{@item.name} is met by #{link_to @seller.name, @seller.url}, priced at #{ @user.fav_currency } #{ humanized_money_with_symbol @seller.today_price.exchange_to(@user.fav_currency) } (#{ humanized_money_with_symbol @seller.today_price }).
+
+br
+' WishGotCha

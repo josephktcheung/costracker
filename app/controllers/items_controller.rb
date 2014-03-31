@@ -44,7 +44,12 @@ class ItemsController < ApplicationController
 
   def fetch_details
     puts params
-    @seller = Seller.get_temp_price_and_stock(params[:url], params[:price_tag], params[:currency], params[:stock_tag])
+    @seller = Seller.get_temp_price_and_stock(
+        params[:url],
+        params[:price_tag],
+        params[:currency],
+        params[:stock_tag]
+      )
     @price_id = params[:price_id]
     @stock_id = params[:stock_id]
     respond_to do |format|

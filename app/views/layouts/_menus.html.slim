@@ -1,5 +1,7 @@
 - if current_user
   li
+    = link_to "Currency: #{current_user.fav_currency}"
+  li
     = link_to "My wish list", items_url
   li
     = link_to "Log out", logout_url, method: :delete

@@ -1,13 +1,27 @@
 = image_tag(@item.image_url, class: "col-md-4 col-xs-6")
-.col-md-6
+.col-md-6.col-xs-6
   h3 Desired Price
-  | #{desired_price(@item, @user.fav_currency).currency.iso_code}
   = humanized_money_with_symbol desired_price(@item, @user.fav_currency)
   h3 Current Price
   - if best_seller(@item).today_price
-    | #{desired_price(@item, @user.fav_currency).currency.iso_code}
-    =<> humanized_money_with_symbol today_price(best_seller(@item),@user.fav_currency)
-    | (#{humanized_money_with_symbol best_seller(@item).today_price})
+    =<> humanized_money_with_symbol today_price_in_fav_currency(best_seller(@item),@user.fav_currency)
+    | (#{ best_seller(@item).today_price.currency.iso_code }
+    |  #{humanized_money_with_symbol best_seller(@item).today_price})
   h3 Bargain Seller
-  | #{best_seller(@item).name}
-  =<> link_to "Buy now!", best_seller(@item).url
+  = link_to best_seller(@item).name, best_seller(@item).url
+.col-md-12
+  table.table.table-striped
+    thead
+      tr
+        th Seller
+        th Price in #{@user.fav_currency}
+        th Local Price
+    tbody
+      - @item.sellers.each do |seller|
+        tr
+          td #{ link_to seller.name, seller.url }
+          td
+            | #{ humanized_money_with_symbol today_price_in_fav_currency(seller,@user.fav_currency)}
+          td
+            | #{ seller.today_price.currency.iso_code }
+            |  #{ humanized_money_with_symbol seller.today_price }
