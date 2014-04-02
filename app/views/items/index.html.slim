@@ -1,3 +1,5 @@
-.col-md-10
-  ul.item-list
-    = render partial: "item", collection: @items, locals: {fav_currency: @user.fav_currency}
+.row
+  = render partial: "layouts/sidebar"
+  .col-md-10
+    ul.item-list
+      = render partial: "item", collection: @items, locals: { fav_currency: @user.fav_currency }

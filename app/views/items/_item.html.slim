@@ -1,7 +1,7 @@
-li
-  .row
+.row
+  li
     .col-md-4
-        = link_to image_tag( item.image_url, size: "250x250" ), item_url(item.id)
+        = link_to image_tag( item.image_url, size: "250x250", class: "img-thumbnail img-responsive" ), item_url(item.id)
     .col-md-8
       .row
         =<> item.name
@@ -14,5 +14,5 @@ li
         =<> humanized_money_with_symbol desired_price( item, fav_currency )
       .row
         | Current Price
-        - if best_seller(item).today_price
+        - if best_seller(item)
           =<> humanized_money_with_symbol today_price_in_fav_currency( best_seller(item),fav_currency )

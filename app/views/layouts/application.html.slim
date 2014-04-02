@@ -24,13 +24,8 @@ html
 
     header role="banner"
     main.container role="main"
-      .row
-        - if current_user
-          == render partial: "layouts/sidebar"
-          == yield
-        - else
-          == yield
-        == render partial: "layouts/messages"
+      == yield
+      == render partial: "layouts/messages"
     .container#footer
       p.text-muted
         => link_to "Privacy", privacy_url
