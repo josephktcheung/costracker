@@ -9,6 +9,7 @@ class Item
   attr_accessor :temp_price
 
   validates :name, presence: true
+  validates :temp_price, numericality: { greater_than: 0 }
   before_save :create_desired_price
 
   belongs_to :user
@@ -17,6 +18,6 @@ class Item
   accepts_nested_attributes_for :sellers, allow_destroy: true, reject_if: proc { |attributes| attributes['name'].blank? or attributes['url'].blank? }
 
   def create_desired_price
-    self.desired_price = Money.new_with_amount(self.temp_price.to_f, self.user.fav_currency)
+    self.desired_price = Money.new_with_amount(self.temp_price, self.user.fav_currency)
   end
 end

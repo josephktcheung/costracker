@@ -72,7 +72,9 @@ class ItemsController < ApplicationController
           :_destroy
         ]
       ]
-      params.require(:item).permit(attributes)
+      item_params = params.require(:item).permit(attributes)
+      item_params[:temp_price] = item_params[:temp_price].to_f
+      item_params
     end
 
     def set_user
