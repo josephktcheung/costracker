@@ -56,7 +56,7 @@ ps4.sellers.create!([
     name: "Nojima",
     url: "http://online.nojima.co.jp/front/commodity/1/4948872413756/",
     currency: "JPY",
-    price_tag: "#shohin-contents"
+    price_tag: "#shohin-contents .price"
   }
 ])
 
