@@ -27,14 +27,10 @@ $ ->
     currency = $('.fetch-details').closest('.panel-body').children('.currency').children('select').val()
     price_tag = $(@).closest('.panel-body').children('.price-tag').children('input').val()
     price_id = $(@).closest('.panel-body').children('.price').children('input').attr('id')
-    stock_tag = $(@).closest('.panel-body').children('.stock-tag').children('input').val()
-    stock_id = $(@).closest('.panel-body').children('.stock').children('input').attr('id')
     data = {
       url: url
       price_tag: price_tag
-      stock_tag: stock_tag
       price_id: price_id
-      stock_id: stock_id
       currency: currency
     }
     $.ajax(type: 'POST', url: 'fetch_details', data: data)
