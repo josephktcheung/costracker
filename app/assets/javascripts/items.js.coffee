@@ -1,4 +1,3 @@
-
 $ ->
 
   hideImg = () ->
@@ -38,3 +37,8 @@ $ ->
     regexp = new RegExp($(@).data('id'), 'g')
     $(@).before($(@).data('fields').replace(regexp, time))
     event.preventDefault()
+
+  $('.gridster ul').gridster({
+    widget_margins: [10, 10]
+    widget_base_dimensions: [140, 140]
+    })
