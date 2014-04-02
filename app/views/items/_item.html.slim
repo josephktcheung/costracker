@@ -1,7 +1,7 @@
 .row
   li
     .col-md-4
-        = link_to image_tag( item.image_url, size: "250x250", class: "img-thumbnail img-responsive" ), item_url(item.id)
+        = link_to image_tag( item.image_url, class: "img-thumbnail img-responsive", id: "img-thumbnail" ), item_url(item.id)
     .col-md-8
       .row
         =<> item.name

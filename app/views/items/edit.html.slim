@@ -1,3 +1,5 @@
-.col-md-10#edit-form
-  h2 Update #{@item.name}
-  == render partial: "items/item_form"
+.row
+  == render partial: "layouts/sidebar"
+  .col-md-10#edit-form
+    h2 Update #{@item.name}
+    == render partial: "items/item_form"
