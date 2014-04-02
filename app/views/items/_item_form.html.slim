@@ -1,26 +1,22 @@
 = form_for @item, html: {id: "wishlistform"} do |f|
   .row#item-form
-    - if @item.image_url.present?
-      = image_tag @item.image_url, class: "col-md-4", id: "img-thumbnail"
-      .form-group.col-md-8.item-attr
-        = f.label :name
-        = f.text_field :name, class: "form-control", placeholder: "Item name"
-      .form-group.col-md-8.item-attr
-        = f.label :image_url, "Image link"
-        = f.text_field :image_url, class: "form-control", placeholder: "Item image url"
-      .form-group.col-md-8.item-attr
-        = f.label :temp_price, "Desired price"
-        = f.number_field :temp_price, class: "form-control", value: f.object.desired_price.cents / 100
+    - if @item.image_url
+      = image_tag @item.image_url, class: "col-md-4 img-thumbnail img-responsive", id: "img-thumbnail"
     - else
-      .form-group.item-attr
-        = f.label :name
-        = f.text_field :name, class: "form-control", placeholder: "Item name"
-      .form-group.item-attr
-        = f.label :image_url, "Image link"
-        = f.text_field :image_url, class: "form-control", placeholder: "Item image url"
-      .form-group.item-attr
-        = f.label :temp_price, "Desired price"
-        = f.number_field :temp_price, class: "form-control"
+      img.img-thumbnail.img-responsive.col-md-4#img-thumbnail data-src="holder.js/250x250/text:Preview Image"
+    .col-md-7.col-md-offset-1
+      .row
+        .form-group.item-attr
+          = f.label :name
+          = f.text_field :name, class: "form-control", placeholder: "Item name"
+      .row
+        .form-group.item-attr
+          = f.label :image_url, "Image link"
+          = f.text_field :image_url, class: "form-control", placeholder: "Item image url"
+      .row
+        .form-group.item-attr
+          = f.label :temp_price, "Desired price"
+          = f.number_field :temp_price, class: "form-control", value: @price
   = f.fields_for :sellers do |seller|
     = render 'seller_fields', f: seller
   = link_to_add_fields raw('<span class="glyphicon glyphicon-plus-sign"></span> Add seller'), f, :sellers

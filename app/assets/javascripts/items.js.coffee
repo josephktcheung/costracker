@@ -12,13 +12,10 @@ $ ->
 
   $('form').on 'change', '#item_image_url', (event) ->
     url = $('#item_image_url').val()
-    if $('#img-thumbnail').length
+    if url
       $('#img-thumbnail').attr('src', url)
-      $('#img-thumbnail').error(hideImg())
     else
-      $('#item-form > *').addClass('col-md-8')
-      img = $('<img src="'+url+'" alt="Item url" class="img-thumbnail col-md-4" id="img-thumbnail"/>')
-      $('#item-form').prepend(img)
+      $('#img-thumbnail').attr('src', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTAiIGhlaWdodD0iMjUwIj48cmVjdCB3aWR0aD0iMjUwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjEyNSIgeT0iMTI1IiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE2cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+UHJldmlldyBJbWFnZTwvdGV4dD48L3N2Zz4=')
 
 
   $('form').on 'click', '.fetch-details', (event) ->

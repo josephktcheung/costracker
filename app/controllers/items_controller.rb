@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @price = 0
     @item.sellers.build
     @currencies = Seller.accepted_currencies_objects
   end
@@ -31,6 +32,7 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
+    @price = @item.desired_price.cents / 100
     @item.update(item_params)
     redirect_to items_url
   end
