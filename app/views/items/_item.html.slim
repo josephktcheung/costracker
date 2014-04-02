@@ -1,19 +1,18 @@
 li
   .row
     .col-md-4
-      span
         = link_to image_tag( item.image_url, size: "250x250" ), item_url(item.id)
     .col-md-8
-      span
+      .row
         =<> item.name
         = link_to edit_item_url( item.id ), class: "btn btn-default btn-xs"
           i.glyphicon.glyphicon-pencil
         = link_to item, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-default btn-xs"
           i.glyphicon.glyphicon-trash
-        br
+      .row
         | Desired Price
-        =<> humanized_money_with_symbol desired_price(item, fav_currency)
-        br
+        =<> humanized_money_with_symbol desired_price( item, fav_currency )
+      .row
         | Current Price
         - if best_seller(item).today_price
-          =<> humanized_money_with_symbol today_price_in_fav_currency(best_seller(item),fav_currency)
+          =<> humanized_money_with_symbol today_price_in_fav_currency( best_seller(item),fav_currency )
