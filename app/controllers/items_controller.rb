@@ -5,8 +5,8 @@ class ItemsController < ApplicationController
   before_action :is_authenticated?
 
   def index
-    @items = Item.all.entries
     @user = current_user
+    @items = @user.items
   end
 
   def show

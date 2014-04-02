@@ -73,12 +73,6 @@ xboxone.sellers.create!([
     url: "http://www.amazon.co.jp/Xbox-One-Console-Standard-Microsoft/dp/B00GM6LSUW/ref=sr_1_1?ie=UTF8&qid=1395998581&sr=8-1&keywords=xbox+one",
     currency: "JPY",
     price_tag: ".priceLarge"
-  },
-  {
-    name: "Price.com.hk",
-    url: "http://www.price.com.hk/product.php?p=160453",
-    currency: "HKD",
-    price_tag: ".head_a .price"
   }
 ])
 
@@ -101,12 +95,6 @@ n54l.sellers.create!([
     url: "http://nttxstore.jp/_II_HP14559029",
     currency: "JPY",
     price_tag: ".detail .price span"
-  },
-  {
-    name: "Price.com.hk",
-    url: "http://www.price.com.hk/product.php?p=150256",
-    currency: "HKD",
-    price_tag: ".head_a .price"
   }
 ])
 
@@ -123,12 +111,6 @@ se535.sellers.create!([
     url: "http://www.amazon.co.jp/%E3%80%90%E5%9B%BD%E5%86%85%E6%AD%A3%E8%A6%8F%E5%93%81%E3%80%91-SHURE-%E9%AB%98%E9%81%AE%E9%9F%B3%E6%80%A7%E3%82%A4%E3%83%A4%E3%83%9B%E3%83%B3-%E3%83%A1%E3%82%BF%E3%83%AA%E3%83%83%E3%82%AF%E3%83%96%E3%83%AD%E3%83%B3%E3%82%BA-SE535-V-J/dp/B003YOH8RW/ref=sr_1_2?ie=UTF8&qid=1395999207&sr=8-2&keywords=se535",
     currency: "JPY",
     price_tag: ".priceLarge"
-  },
-  {
-    name: "Price.com.hk",
-    url: "http://www.price.com.hk/product.php?p=118746",
-    currency: "HKD",
-    price_tag: ".detail .price span"
   }
 ])
 
