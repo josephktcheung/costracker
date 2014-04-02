@@ -3,15 +3,14 @@ require 'pry'
 class ItemsController < ApplicationController
 
   before_action :is_authenticated?
+  before_action :set_user
 
   def index
-    @user = current_user
     @items = @user.items
   end
 
   def show
     @item = Item.find_by(id: params[:id])
-    @user = current_user
   end
 
   def new
@@ -21,7 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = current_user.items.create(item_params)
+    @item = @user.items.create(item_params)
     redirect_to items_url, notice: "New wishlist item created!"
   end
 
@@ -74,5 +73,9 @@ class ItemsController < ApplicationController
         ]
       ]
       params.require(:item).permit(attributes)
+    end
+
+    def set_user
+      @user = current_user
     end
 end
