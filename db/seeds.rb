@@ -16,12 +16,12 @@ user1.items.create!([
   {
     name: "PS4",
     image_url: "http://ecx.images-amazon.com/images/I/71PKbD5FhhL._SL1500_.jpg",
-    desired_price: Money.new_with_amount(3000, "HKD")
+    temp_price: "3000"
   },
   {
     name: "XBOX ONE",
     image_url: "http://ecx.images-amazon.com/images/I/51RgDBxhVnL._SL1000_.jpg",
-    desired_price: Money.new_with_amount(3500, "HKD")
+    temp_price: "3500"
   }
 ])
 
@@ -29,12 +29,12 @@ user2.items.create!([
   {
     name: "N54L",
     image_url: "http://image.nttxstore.jp/250_images/H/HP/HP14559029.jpg",
-    desired_price: Money.new_with_amount(350, "USD")
+    temp_price: "350"
   },
   {
     name: "Shure SE535",
     image_url: "http://ecx.images-amazon.com/images/I/7190Ympow7L._SL1500_.jpg",
-    desired_price: Money.new_with_amount(400, "USD")
+    temp_price: "400"
   }
 ])
 

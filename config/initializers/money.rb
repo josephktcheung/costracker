@@ -1,5 +1,6 @@
 # encoding : utf-8
 require 'money/bank/open_exchange_rates_bank'
+require 'monetize/core_extensions'
 
 MoneyRails.configure do |config|
 
