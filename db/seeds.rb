@@ -16,32 +16,32 @@ user1.items.create!([
   {
     name: "PS4",
     image_url: "http://ecx.images-amazon.com/images/I/71PKbD5FhhL._SL1500_.jpg",
-    temp_price: "3000"
+    temp_price: 3000
   },
   {
     name: "XBOX ONE",
     image_url: "http://ecx.images-amazon.com/images/I/51RgDBxhVnL._SL1000_.jpg",
-    temp_price: "3500"
+    temp_price: 3500
   },
   {
     name: "SRH440",
     image_url: "http://ecx.images-amazon.com/images/I/818A4clxHLL._SL1500_.jpg",
-    temp_price: "500"
+    temp_price: 500
   },
   {
     name: "HD 650",
     image_url: "http://ecx.images-amazon.com/images/I/81zggHtrqML._SL1500_.jpg",
-    temp_price: "1800"
+    temp_price: 1800
   },
   {
     name: "adidas Predator Absolion LZ TRX FG - Wht/Blk/Red",
     image_url: "http://ecx.images-amazon.com/images/I/51f0Ok7gHgL.jpg",
-    temp_price: "500"
+    temp_price: 500
   },
   {
     name: "Intel 530 Series 240GB",
     image_url: "http://ecx.images-amazon.com/images/I/91diAlwkLML._SL1500_.jpg",
-    temp_price: "1500"
+    temp_price: 1500
   }
 ])
 
@@ -49,12 +49,12 @@ user2.items.create!([
   {
     name: "N54L",
     image_url: "http://image.nttxstore.jp/250_images/H/HP/HP14559029.jpg",
-    temp_price: "350"
+    temp_price: 350
   },
   {
     name: "Shure SE535",
     image_url: "http://ecx.images-amazon.com/images/I/7190Ympow7L._SL1500_.jpg",
-    temp_price: "400"
+    temp_price: 400
   }
 ])
 
