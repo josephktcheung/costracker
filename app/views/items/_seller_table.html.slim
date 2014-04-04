@@ -1,0 +1,8 @@
+- @item.sellers.each do |seller|
+  tr
+    td #{ link_to seller.name, seller.url }
+    td
+      | #{ humanized_money_with_symbol today_price_in_fav_currency(seller,@user.fav_currency)}
+    td
+      | #{ seller.today_price.currency.iso_code }
+      |  #{ humanized_money_with_symbol seller.today_price }

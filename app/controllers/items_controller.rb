@@ -27,12 +27,12 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @price = @item.desired_price.cents / 100
     @currencies = Seller.accepted_currencies_objects
   end
 
   def update
     @item = Item.find(params[:id])
-    @price = @item.desired_price.cents / 100
     @item.update(item_params)
     redirect_to items_url
   end

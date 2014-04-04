@@ -1,12 +1,12 @@
 li data-row="1" data-col="1" data-sizex="1" data-sizey="2"
-  = link_to image_tag( item.image_url, class: "img-thumbnail img-responsive", id: "img-thumbnail" ), item_url(item.id)
-  =<> item.name
-  .btn-group
-  /     = link_to edit_item_url( item.id ), class: "btn btn-default btn-xs"
-  /       i.glyphicon.glyphicon-pencil
-  /     = link_to item, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-default btn-xs"
-  /       i.glyphicon.glyphicon-trash
-  /     | Desired Price
-  /     =<> humanized_money_with_symbol desired_price( item, fav_currency )
-  - if best_seller(item)
+  = link_to image_tag( item.image_url, class: "img-thumbnail img-responsive item-thumbnail" ), item_url(item.id)
+  p
+    =<> item.name
+    = link_to edit_item_url( item.id ), class: "btn btn-default btn-xs"
+      i.glyphicon.glyphicon-pencil
+    = link_to item, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-default btn-xs"
+      i.glyphicon.glyphicon-trash
+  / | Desired Price
+  / =<> humanized_money_with_symbol desired_price( item, fav_currency )
+  p
     =<> humanized_money_with_symbol today_price_in_fav_currency( best_seller(item),fav_currency )
