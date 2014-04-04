@@ -11,6 +11,10 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(id: params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: @item.sellers }
+    end
   end
 
   def new
