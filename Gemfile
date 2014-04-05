@@ -12,7 +12,7 @@ gem 'bson_ext'
 gem 'mongoid', github: "mongoid/mongoid"
 gem 'bcrypt'
 gem 'money-rails'
-gem "money-open-exchange-rates", "~> 0.1.5"
+gem 'money-historical-bank', :git => "git@github.com:atwam/money-historical-bank.git"
 gem 'figaro'
 gem 'sidekiq'
 gem 'whenever', require: false

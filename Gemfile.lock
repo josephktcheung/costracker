@@ -8,6 +8,14 @@ GIT
       origin (~> 2.1)
       tzinfo (>= 0.3.37)
 
+GIT
+  remote: git@github.com:atwam/money-historical-bank.git
+  revision: c318a930f74a000ee020bab194805865b2fb83df
+  specs:
+    money-historical-bank (0.0.3)
+      money (>= 3.7.1)
+      yajl-ruby (>= 0.8.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -144,9 +152,6 @@ GEM
     money (6.0.1)
       i18n (~> 0.6.4)
       monetize (~> 0.1.3)
-    money-open-exchange-rates (0.1.5)
-      json (>= 1.7)
-      money (>= 3.7.1)
     money-rails (0.9.0)
       activesupport (>= 3.0)
       money (~> 6.0.0)
@@ -264,6 +269,7 @@ GEM
       chronic (>= 0.6.3)
     xpath (2.0.0)
       nokogiri (~> 1.3)
+    yajl-ruby (1.2.0)
 
 PLATFORMS
   ruby
@@ -286,7 +292,7 @@ DEPENDENCIES
   launchy
   letter_opener
   mechanize
-  money-open-exchange-rates (~> 0.1.5)
+  money-historical-bank!
   money-rails
   mongoid!
   pry

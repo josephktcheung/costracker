@@ -1,14 +1,12 @@
 # encoding : utf-8
-require 'money/bank/open_exchange_rates_bank'
+require 'money/bank/historical_bank'
 require 'monetize/core_extensions'
 
 MoneyRails.configure do |config|
 
   config.default_currency = :hkd
 
-  moe = Money::Bank::OpenExchangeRatesBank.new
-  moe.app_id = ENV["MOE_APP_ID"]
-  moe.update_rates
+  moe = Money::Bank::HistoricalBank.new
   Money.default_bank = moe
 
   # config.default_bank = GoogleCurrency.new
