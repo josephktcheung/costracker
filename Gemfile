@@ -17,6 +17,7 @@ gem 'figaro'
 gem 'sidekiq'
 gem 'whenever', require: false
 gem 'sinatra'
+gem 'rabl'
 
 group :development, :test do
   # gem "better_errors"
