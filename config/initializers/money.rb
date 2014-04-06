@@ -4,11 +4,16 @@ require 'monetize/core_extensions'
 
 MoneyRails.configure do |config|
 
-  config.default_currency = :hkd
-
   moe = Money::Bank::HistoricalBank.new
   Money.default_bank = moe
 
+  base_currency = "USD"
+
+  Rate.all.each do |rates|
+    rates.rate.each do |currency, value|
+      moe.set_rate(rates.date, base_currency, currency, value)
+    end
+  end
   # config.default_bank = GoogleCurrency.new
 
   # Add exchange rates to current money bank object.

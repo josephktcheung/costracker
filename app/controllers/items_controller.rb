@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find_by(id: params[:id])
     @fav_currency = @user.fav_currency
+    @bank = Money.default_bank
   end
 
   def new

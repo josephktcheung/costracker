@@ -20,4 +20,8 @@ class Item
   def create_desired_price
     self.desired_price = Money.new_with_amount(self.temp_price, self.user.fav_currency)
   end
+
+  def best_seller
+    self.sellers.min { |a, b| a.today_price <=> b.today_price }
+  end
 end

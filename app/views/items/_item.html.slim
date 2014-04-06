@@ -9,4 +9,4 @@ li data-row="1" data-col="1" data-sizex="1" data-sizey="2"
   / | Desired Price
   / =<> humanized_money_with_symbol desired_price( item, fav_currency )
   p
-    =<> humanized_money_with_symbol today_price_in_fav_currency( best_seller(item),fav_currency )
+    =<> humanized_money_with_symbol today_price_in_fav_currency( item.best_seller,fav_currency )

@@ -5,12 +5,12 @@
     h3 Desired Price
     = humanized_money_with_symbol desired_price(@item, @user.fav_currency)
     h3 Current Price
-    - if best_seller(@item).today_price
-      =<> humanized_money_with_symbol today_price_in_fav_currency(best_seller(@item),@user.fav_currency)
-      | (#{ best_seller(@item).today_price.currency.iso_code }
-      |  #{ humanized_money_with_symbol best_seller(@item).today_price })
+    - if @item.best_seller.today_price
+      =<> humanized_money_with_symbol today_price_in_fav_currency(@item.best_seller ,@user.fav_currency)
+      | (#{ @item.best_seller.today_price.currency.iso_code }
+      |  #{ humanized_money_with_symbol @item.best_seller.today_price })
     h3 Bargain Seller
-    = link_to best_seller(@item).name, best_seller(@item).url
+    = link_to @item.best_seller.name, @item.best_seller.url
 .row
   .col-md-10.col-md-offset-2
     table.table.table-striped

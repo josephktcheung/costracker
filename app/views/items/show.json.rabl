@@ -4,9 +4,11 @@ attributes :name
 child :sellers do
   attributes :name
 
-  child :price_logs do
+  child :price_logs, object_root:false do
     attributes :date
-    node(:price) { |price_log| price_log.price.exchange_to(@fav_currency).dollars }
+    node(:price) do |price_log|
+      @bank.exchange_with(price_log.date, price_log.price, @fav_currency).dollars
+    end
   end
 
 end
